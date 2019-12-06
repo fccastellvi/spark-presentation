@@ -1,0 +1,11 @@
+/*
+ * Use this file to declare the versions of dependent libraries.
+ */
+
+ext {
+	pegdown = "1.6.0"
+    scalatest = "3.0.2"
+ 	spark = "2.4.0"
+	scalaVersion = "2.11"
+	scalaLibVersion = "2.11.8"
+}

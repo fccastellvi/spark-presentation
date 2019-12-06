@@ -1,0 +1,29 @@
+ext.set('projectRoot', project.projectDir.toString())
+
+apply plugin: 'scala'
+
+apply from: file("./gradle/dependency-versions.gradle")
+
+group 'com.ferran.projects'
+version '1.0-SNAPSHOT'
+
+
+repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.scala-lang:scala-library:$scalaLibVersion")
+    compile("org.scala-lang:scala-compiler:$scalaLibVersion")
+    compile("org.apache.spark:spark-sql_$scalaVersion:$spark")
+    compile("org.apache.spark:spark-core_$scalaVersion:$spark")
+
+}
+
+task run(type: JavaExec, dependsOn: classes) {
+    main = 'com.ferran.projects.ScalaPresentation'
+    classpath sourceSets.main.runtimeClasspath
+    classpath configurations.runtime
+}
